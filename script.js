@@ -13,7 +13,32 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }, gifDuration);
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+// [1]: Get the body-Home div
+const bodyHome = document.querySelector('.body-Home');
+
+// [2]: Get the on-off span
+const onOffButton = document.querySelector('.on-off');
+
+// [3]: Get the body-Space div
+const bodySpace = document.querySelector('.body-Space');
+
+// [4]: Add event listener for the on-off button
+onOffButton.addEventListener('click', () => {
+    bodyHome.style.display = 'none';
+    bodySpace.style.display = 'block';
+    
+    const video = bodySpace.querySelector('video');
+    video.play();
+    video.style.display = 'block';
+    video.style.objectFit = '16:9';
+
+    video.addEventListener('ended', () => {
+        bodySpace.style.display = 'none';
+        bodyHome.style.display = 'block';
+    });
+});
+
+/*document.addEventListener("DOMContentLoaded", function() {
   const video = document.querySelector("video");
   const bodyHome = document.querySelector(".body-Home");
   const bodySpace = document.querySelector(".body-Space");
@@ -40,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// $(document).ready(function() {
+/ $(document).ready(function() {
 //     $(".on-off").click(function() {
 //       var video = document.createElement('video');
 //       video.src = 'path_to_your_video.mp4';
@@ -65,3 +90,4 @@ document.addEventListener("DOMContentLoaded", function() {
 //       $('body').css('overflow', 'auto');
 //     }, gifDuration);
 //   });
+*/
